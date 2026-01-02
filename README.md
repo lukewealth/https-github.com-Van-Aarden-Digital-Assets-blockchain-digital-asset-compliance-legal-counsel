@@ -1,20 +1,69 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Van Aarden Digital Assets Counsel (VDAC)
 
-# Run and deploy your AI Studio app
+This repository contains the source code for the institutional-grade website of Van Aarden Digital Assets Counsel (VDAC). The platform is designed to present blockchain, mining, and digital assets strictly as regulated infrastructure, targeting an audience of regulators, banks, governments, and institutional investors.
 
-This contains everything you need to run your app locally.
+## Stack
 
-View your app in AI Studio: https://ai.studio/apps/drive/1HjadbFBmXNQ0HKUd62Pv4GRF6_pmrr_j
+- **Framework:** Vite + React
+- **Routing:** React Router
+- **Styling:** Tailwind CSS
+- **Language:** TypeScript
 
-## Run Locally
+## Getting Started
 
-**Prerequisites:**  Node.js
+### Prerequisites
 
+- Node.js (v18 or higher)
+- npm
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+### Installation
+
+1.  Clone the repository:
+    ```bash
+    git clone https://github.com/lukewealth/https-github.com-Van-Aarden-Digital-Assets-blockchain-digital-asset-compliance-legal-counsel.git
+    ```
+2.  Navigate to the project directory:
+    ```bash
+    cd https-github.com-Van-Aarden-Digital-Assets-blockchain-digital-asset-compliance-legal-counsel
+    ```
+3.  Install the dependencies:
+    ```bash
+    npm install
+    ```
+
+### Running the Development Server
+
+To run the app in development mode, use the following command:
+
+```bash
+npm run dev
+```
+
+The server will start on `http://localhost:3000`.
+
+## Available Scripts
+
+- `npm run dev`: Starts the development server.
+- `npm run build`: Builds the app for production.
+- `npm run preview`: Serves the production build locally.
+
+## Project Structure
+
+```
+src/
+├── assets/         # Static assets (images, icons)
+├── components/     # Reusable React components
+├── config/         # Brand and project configuration
+├── data/           # Static data for the application
+├── pages/          # Page components
+├── styles/         # Global and component-specific styles
+├── App.tsx         # Main application component with routing
+├── main.tsx        # Entry point of the application
+└── index.css       # Main CSS file
+```
+
+## Brand & Identity
+
+- **Firm Name:** Van Aarden Digital Assets Counsel (VDAC)
+- **Tone:** Institutional, compliance-first, calm, authoritative.
+- **Tagline:** Security-first compliance for digital assets, mining infrastructure, and institutional governance.
