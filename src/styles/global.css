@@ -1,0 +1,46 @@
+.hero-dark {
+  background: linear-gradient(180deg, rgba(11,28,45,0.94), rgba(11,28,45,0.86));
+}
+
+.overlay-bg {
+  background: linear-gradient(180deg, rgba(11,28,45,0.85), rgba(11,28,45,0.55));
+}
+
+.read-more {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.chevron {
+  transition: transform 160ms ease;
+}
+.list-row:hover .chevron {
+  transform: translateX(2px);
+}
+
+.floating-contact {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  z-index: 40;
+}
+
+.presence-banner {
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+  min-height: 180px;
+}
+.presence-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(11,28,45,0.78), rgba(11,28,45,0.58));
+}
+.presence-banner > * {
+  position: relative;
+  z-index: 1;
+}

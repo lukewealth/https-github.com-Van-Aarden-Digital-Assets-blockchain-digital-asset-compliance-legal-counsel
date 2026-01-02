@@ -1,0 +1,17 @@
+:root {
+  --color-navy: #0b1c2d;
+  --color-slate: #2e3a45;
+  --color-steel: #708090;
+  --color-gold: #a68966;
+  --color-offwhite: #f9fafb;
+  --shadow-soft: 0 8px 18px rgba(0,0,0,0.12);
+  --shadow-strong: 0 18px 38px rgba(0,0,0,0.24);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-5: 20px;
+  --spacing-6: 24px;
+  --spacing-8: 32px;
+  --spacing-10: 40px;
+}

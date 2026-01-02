@@ -1,0 +1,92 @@
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--color-slate);
+  background: var(--color-offwhite);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: 'Playfair Display', serif;
+  color: var(--color-navy);
+}
+
+.btn-primary {
+  background: var(--color-gold);
+  color: var(--color-navy);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-weight: 700;
+  padding: 12px 20px;
+  border-radius: var(--radius-sm);
+  transition: box-shadow 200ms ease, transform 200ms ease;
+}
+.btn-primary:hover { box-shadow: var(--shadow-soft); }
+.btn-primary:active { transform: translateY(1px); }
+
+.btn-secondary {
+  border: 1px solid rgba(112,128,144,0.4);
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-weight: 700;
+  padding: 12px 20px;
+  border-radius: var(--radius-sm);
+  transition: background 200ms ease, box-shadow 200ms ease, transform 200ms ease;
+}
+.btn-secondary:hover { background: rgba(255,255,255,0.08); }
+.btn-secondary:active { transform: translateY(1px); }
+
+.card {
+  background: white;
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: var(--radius-md);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.06);
+  padding: var(--spacing-6);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(166,137,102,0.14);
+  color: var(--color-gold);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.list-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  transition: background 160ms ease, transform 160ms ease;
+}
+.list-row:hover {
+  background: rgba(0,0,0,0.02);
+}
+
+.animate-fade-in { animation: fade-in 520ms ease-out both; }
+.animate-fade-in-up { animation: fade-in-up 620ms ease-out both; }
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
