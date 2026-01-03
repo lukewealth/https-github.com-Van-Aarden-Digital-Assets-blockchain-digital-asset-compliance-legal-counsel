@@ -1,8 +1,8 @@
-import eliseVanAarden from '../assets/team/elise-van-aarden-headshot.webp';
-import martinKeller from '../assets/team/martin-keller-headshot.webp';
-import lukasReinhardt from '../assets/team/lukas-reinhardt-headshot.png';
-import sofiaLindstrom from '../assets/team/sofia-lindstrom-headshot.png';
-import ellenFreshman from '../assets/team/ellen-freshman.png';
+import eliseVanAarden from '@/src/assets/team/elise-van-aarden-headshot.webp';
+import martinKeller from '@/src/assets/team/martin-keller-headshot.webp';
+import lukasReinhardt from '@/src/assets/team/lukas-reinhardt-headshot.png';
+import sofiaLindstrom from '@/src/assets/team/sofia-lindstrom-headshot.png';
+import ellenFreshman from '@/src/assets/team/ellen-freshman.png';
 
 export interface TeamMember {
   name: string;
