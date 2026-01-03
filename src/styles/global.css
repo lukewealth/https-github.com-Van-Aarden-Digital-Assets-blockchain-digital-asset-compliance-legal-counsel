@@ -20,6 +20,23 @@
   transform: translateX(2px);
 }
 
+/* Reduced Motion Support for Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .chevron {
+    transition: none;
+  }
+  
+  .list-row:hover .chevron {
+    transform: none;
+  }
+}
+
 .floating-contact {
   position: fixed;
   bottom: 18px;

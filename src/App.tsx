@@ -10,6 +10,14 @@ import MarketPrecedent from './pages/MarketPrecedent';
 import Team from './pages/Team';
 import ExpertiseHub from './pages/ExpertiseHub';
 import IndustryPractice from './pages/IndustryPractice';
+import Publications from './pages/Publications';
+import AdminDashboard from './pages/Admin/AdminDashboard';
+import AdminPosts from './pages/Admin/AdminPosts';
+import AdminPostEditor from './pages/Admin/AdminPostEditor';
+import AdminPublications from './pages/Admin/AdminPublications';
+import AdminPublicationEditor from './pages/Admin/AdminPublicationEditor';
+import AdminInbox from './pages/Admin/AdminInbox';
+import AdminMedia from './pages/Admin/AdminMedia';
 import Contact from './pages/Contact';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -28,7 +36,7 @@ const App: React.FC = () => {
       <div className="flex flex-col min-h-screen font-sans selection:bg-gold/30">
         <ScrollToTop />
         <Navbar />
-        <main className="flex-grow pt-20">
+        <main className="flex-grow pt-20 pb-20 lg:pb-0">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/institutional-value" element={<InstitutionalValue />} />
@@ -40,6 +48,16 @@ const App: React.FC = () => {
             <Route path="/team" element={<Team />} />
             <Route path="/expertise" element={<ExpertiseHub />} />
             <Route path="/industry/:slug" element={<IndustryPractice />} />
+            <Route path="/publications" element={<Publications />} />
+            <Route path="/admin" element={<AdminDashboard />} />
+            <Route path="/admin/posts" element={<AdminPosts />} />
+            <Route path="/admin/posts/new" element={<AdminPostEditor />} />
+            <Route path="/admin/posts/:id" element={<AdminPostEditor />} />
+            <Route path="/admin/publications" element={<AdminPublications />} />
+            <Route path="/admin/publications/new" element={<AdminPublicationEditor />} />
+            <Route path="/admin/publications/:id" element={<AdminPublicationEditor />} />
+            <Route path="/admin/inbox" element={<AdminInbox />} />
+            <Route path="/admin/media" element={<AdminMedia />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>

@@ -1,27 +1,28 @@
 
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { brand } from '../src/config/brand';
 
 const Navbar: React.FC = () => {
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
+    { name: 'Home', path: '/' },
     { name: 'Expertise', path: '/expertise' },
-    { name: 'Mining Compliance', path: '/mining-compliance' },
-    { name: 'Industries', path: '/industries' },
-    { name: 'Regulatory Insight', path: '/regulatory-insight' },
+    { name: 'Industries', path: '/institutional-value' },
+    { name: 'Market Signals', path: '/market-precedent' },
     { name: 'Publications', path: '/publications' },
-    { name: 'About', path: '/about' },
+    { name: 'Team', path: '/team' },
     { name: 'Contact', path: '/contact' },
   ];
 
   return (
     <nav className="fixed w-full bg-white border-b border-gray-200 z-50">
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-        <Link to="/" className="flex flex-col group">
-          <span className="text-navy font-serif text-xl tracking-tight font-bold uppercase">John Doe, Esq.</span>
-          <span className="text-steel text-[10px] uppercase tracking-[0.2em] font-medium group-hover:text-gold transition-colors">Blockchain & Compliance Counsel</span>
+        <Link to="/" className="flex flex-col group" aria-label={brand.fullDisplay}>
+          <span className="text-navy font-serif text-xl tracking-tight font-bold uppercase">{brand.shortName}</span>
+          <span className="text-steel text-[10px] uppercase tracking-[0.2em] font-medium group-hover:text-gold transition-colors">{brand.legalName}</span>
         </Link>
 
         {/* Desktop Nav */}
@@ -41,8 +42,10 @@ const Navbar: React.FC = () => {
 
         {/* Mobile menu button */}
         <button 
-          className="lg:hidden p-2 text-navy"
+          className="lg:hidden p-2 text-navy hover:text-gold transition-colors"
           onClick={() => setIsOpen(!isOpen)}
+          aria-expanded={isOpen}
+          aria-label="Toggle navigation"
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} />
@@ -58,7 +61,9 @@ const Navbar: React.FC = () => {
               <Link
                 key={link.path}
                 to={link.path}
-                className="text-xs uppercase tracking-widest font-semibold text-slate"
+                className={`text-xs uppercase tracking-widest font-semibold transition-colors ${
+                  location.pathname === link.path ? 'text-gold' : 'text-slate'
+                }`}
                 onClick={() => setIsOpen(false)}
               >
                 {link.name}

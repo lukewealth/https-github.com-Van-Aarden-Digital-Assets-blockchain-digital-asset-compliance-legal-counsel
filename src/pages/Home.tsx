@@ -1,137 +1,261 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaBalanceScale } from 'react-icons/fa';
-import { FiLock, FiGlobe, FiCpu, FiShield, FiChevronRight } from 'react-icons/fi';
-import TopBar from '../components/TopBar';
-import AbstractPattern from '../components/AbstractPattern';
+import { FiLock, FiChevronRight } from 'react-icons/fi';
+import SeoMeta from '../components/SeoMeta';
+import { brand } from '../config/brand';
 import { practiceAreas } from '../data/practiceAreas';
 import { briefs } from '../data/briefs';
-import InstitutionalCapabilitiesSection from '../components/InstitutionalCapabilitiesSection';
-import IndustrySignalsSection from '../components/IndustrySignalsSection';
-import TeamSpotlight from '../components/TeamSpotlight';
-import PresenceBanner from '../components/PresenceBanner';
+import MobileActionBar from '../components/MobileActionBar';
+
+// Import SVG icons
+const GlobeIcon = () => (
+  <svg className="w-6 h-6 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="10"></circle>
+    <path d="M2 12h20"></path>
+    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+  </svg>
+);
+
+const InfrastructureIcon = () => (
+  <svg className="w-6 h-6 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="3" y="5" width="18" height="14" rx="2" ry="2"></rect>
+    <path d="M7 15V5"></path>
+    <path d="M11 15V5"></path>
+    <path d="M15 15V5"></path>
+    <path d="M3 10h18"></path>
+  </svg>
+);
+
+const ComplianceIcon = () => (
+  <svg className="w-6 h-6 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+  </svg>
+);
+
+const LegalIcon = () => (
+  <svg className="w-6 h-6 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"></path>
+    <path d="M12 12l-3-3m3 3l3-3m0 6l-3 3m3-3l3 3"></path>
+  </svg>
+);
 
 const Home: React.FC = () => {
   return (
-    <div className="bg-offwhite min-h-screen">
-      <TopBar title="VDAC" />
+    <>
+      <SeoMeta
+        title={brand.defaultPageTitle()}
+        description="Independent legal counsel advising crypto mining operators, digital asset platforms, and institutional stakeholders on regulatory compliance, security governance, and cross-border risk."
+        ogTitle={brand.fullDisplay}
+      />
+      <div className="bg-white">
+        {/* Hero Section */}
+        <section className="relative overflow-hidden bg-navy text-white pt-20 pb-16 md:pt-28 md:pb-20">
+          {/* Background Image */}
+          <div 
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `url('/Energy landscape at twilight.png')`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundAttachment: 'fixed',
+              opacity: 0.15,
+            }}
+          ></div>
 
-      {/* Hero */}
-      <section className="relative flex items-center bg-navy overflow-hidden pt-10 pb-14">
-        <AbstractPattern className="inset-0" />
-        <div className="max-w-7xl mx-auto px-6 relative z-10 space-y-6">
-          <span className="badge">Security-First Counsel</span>
-          <h1 className="text-4xl md:text-5xl font-serif text-white leading-tight">
-            Blockchain Security, Crypto Mining & Digital Asset Compliance
-          </h1>
-          <p className="text-base md:text-lg text-steel max-w-3xl leading-relaxed">
-            Independent legal counsel advising mining operators, digital asset platforms, and institutional stakeholders on regulatory compliance, security governance, and cross-border risk.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3">
-            <Link to="/contact" className="btn-primary inline-flex items-center gap-2">
-              <FiLock /> Request Consultation
-            </Link>
-            <Link to="/expertise" className="btn-secondary inline-flex items-center gap-2 border-white/30 text-white">
-              View Regulatory Expertise
-            </Link>
-          </div>
-        </div>
-      </section>
+          {/* Gradient Overlay for Text Readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-navy/80 via-navy/70 to-navy/80"></div>
 
-      {/* Authority & Trust Strip */}
-      <section className="py-10 bg-white border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { title: "Global Regulatory", desc: "Compliance and cross-border strategy for digital assets.", icon: <FaBalanceScale /> },
-              { title: "Mining Infrastructure", desc: "Legal oversight for mining operations and hosting.", icon: <FiCpu /> },
-              { title: "AML & Sanctions", desc: "Financial crime controls aligned to FATF and OFAC.", icon: <FiShield /> },
-              { title: "Cross Border Legal", desc: "Structuring for funds, DAOs, and international deals.", icon: <FiGlobe /> },
-            ].map((item) => (
-              <div key={item.title} className="p-4 border border-gray-200 bg-offwhite shadow-sm rounded-sm flex items-start gap-3">
-                <div className="text-gold mt-1">{item.icon}</div>
-                <div>
-                  <h4 className="text-[11px] uppercase tracking-widest font-bold text-slate mb-1">{item.title}</h4>
-                  <p className="text-sm text-slate/70">{item.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <InstitutionalCapabilitiesSection />
-      <IndustrySignalsSection />
-
-      {/* Core Practice Areas */}
-      <section className="bg-white py-12">
-        <div className="max-w-6xl mx-auto px-6 space-y-3">
-          <h2 className="text-xl font-serif text-navy">Core Practice Areas</h2>
-          <div className="bg-white border border-gray-200 rounded-md divide-y divide-gray-100 shadow-sm">
-            {practiceAreas.map((p) => (
-              <Link key={p.title} to={p.href} className="list-row px-4">
-                <div>
-                  <p className="text-sm font-serif text-navy">{p.title}</p>
-                  <p className="text-xs text-slate/70">{p.subtitle}</p>
-                </div>
-                <FiChevronRight className="chevron text-steel" />
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <TeamSpotlight />
-
-      {/* Core Practice Areas */}
-      {/* Regulatory Briefings */}
-      <section className="bg-white py-12">
-        <div className="max-w-6xl mx-auto px-6 space-y-4">
-          <div className="flex items-center justify-between">
-            <h2 className="text-xl font-serif text-navy">Regulatory Briefings</h2>
-            <Link to="/expertise" className="text-[11px] uppercase tracking-[0.2em] font-bold text-gold">View All</Link>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {briefs.map((b) => (
-              <Link key={b.title} to={b.href} className="p-5 border border-gray-200 rounded-md bg-white shadow-sm hover:shadow-md transition-shadow duration-200">
-                <p className="text-[11px] uppercase tracking-[0.16em] text-slate/60 mb-1">{b.date}</p>
-                <h3 className="text-lg font-serif text-navy mb-2">{b.title}</h3>
-                <p className="text-sm text-slate/80 leading-relaxed">{b.excerpt}</p>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Highlight Brief CTA */}
-      <section className="bg-navy text-white py-12 md:py-14">
-        <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-          <div className="space-y-2">
-            <p className="text-[11px] uppercase tracking-[0.24em] text-gold">Blockchain</p>
-            <h3 className="text-2xl md:text-3xl font-serif">Latest Authority Briefing</h3>
-            <p className="text-steel text-sm md:text-base max-w-2xl leading-relaxed">
-              Institutional-grade insights on regulatory movements, enforcement themes, and governance expectations for digital asset operators.
+          {/* Background Pattern */}
+          <div 
+            className="absolute inset-0 opacity-5"
+            style={{
+              backgroundImage: `repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 1px,
+                rgba(255,255,255,.02) 1px,
+                rgba(255,255,255,.02) 2px
+              )`,
+            }}
+          ></div>
+          
+          <div className="relative z-10 max-w-5xl mx-auto px-6 text-center md:text-left space-y-6">
+            <span className="inline-flex items-center gap-2 px-4 py-2 bg-gold/10 border border-gold/40 text-gold text-[11px] uppercase tracking-[0.2em] font-bold rounded-sm">
+              <FiLock className="w-3 h-3" />
+              Security First Counsel
+            </span>
+            
+            <h1 className="text-3xl md:text-5xl font-serif font-bold leading-tight max-w-3xl">
+              Blockchain Security, Crypto Mining & Digital Asset Compliance
+            </h1>
+            
+            <p className="text-base md:text-lg text-steel max-w-3xl leading-relaxed">
+              Independent legal counsel advising crypto mining operators, digital asset platforms, and institutional stakeholders on regulatory compliance, security governance, and cross-border risk.
             </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+              <Link 
+                to="/contact" 
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gold text-navy text-[11px] uppercase tracking-[0.2em] font-bold rounded-sm shadow-sm hover:shadow-md transition-shadow"
+              >
+                <FiLock className="w-4 h-4" />
+                Request Consultation
+              </Link>
+              <Link 
+                to="/expertise" 
+                className="inline-flex items-center justify-center px-6 py-3 border-2 border-gold text-gold text-[11px] uppercase tracking-[0.2em] font-bold rounded-sm hover:bg-gold/5 transition-colors"
+              >
+                View Regulatory Expertise
+              </Link>
+            </div>
           </div>
-          {briefs[0] && (
-            <Link
-              to={briefs[0].href}
-              className="inline-flex items-center justify-center px-5 py-3 bg-gold text-navy text-[11px] uppercase tracking-[0.2em] font-bold rounded-sm shadow-sm hover:shadow-md transition-shadow"
-              aria-label="View latest authority briefing"
-            >
-              View briefing
-            </Link>
-          )}
-        </div>
-      </section>
+        </section>
 
-      {/* Presence */}
-      <section className="bg-white py-12">
-        <div className="max-w-6xl mx-auto px-6">
-          <PresenceBanner />
-        </div>
-      </section>
-    </div>
+        {/* Authority & Trust Section */}
+        <section className="bg-white py-12 md:py-16">
+          <div className="max-w-6xl mx-auto px-6">
+            <p className="text-center text-[11px] uppercase tracking-[0.24em] text-slate/60 mb-10 md:mb-12 font-bold">
+              Authority & Trust
+            </p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+              {[
+                { 
+                  title: "Global Regulatory", 
+                  desc: "Compliance experience across major jurisdictions including US, EU, and APAC.",
+                  icon: <GlobeIcon />
+                },
+                { 
+                  title: "Mining Infrastructure", 
+                  desc: "Specialized counsel for energy contracts and hosting agreements.",
+                  icon: <InfrastructureIcon />
+                },
+                { 
+                  title: "AML & Sanctions", 
+                  desc: "Enforcement readiness, financial crime prevention, and OFAC strategy.",
+                  icon: <ComplianceIcon />
+                },
+                { 
+                  title: "Cross-Border Legal", 
+                  desc: "Strategic structuring for emerging technologies and decentralized entities.",
+                  icon: <LegalIcon />
+                },
+              ].map((item) => (
+                <div 
+                  key={item.title} 
+                  className="p-6 border border-gray-200 rounded-sm hover:shadow-md hover:border-gold/30 transition-all duration-200 bg-white"
+                >
+                  <div className="mb-4">
+                    {item.icon}
+                  </div>
+                  <h3 className="text-[12px] uppercase tracking-[0.16em] font-bold text-navy mb-2">
+                    {item.title}
+                  </h3>
+                  <p className="text-sm text-slate/80 leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Core Practice Areas */}
+        <section className="bg-gray-50 py-12 md:py-16">
+          <div className="max-w-6xl mx-auto px-6">
+            <h2 className="text-xl md:text-2xl font-serif font-bold text-navy mb-8">
+              Core Practice Areas
+            </h2>
+            
+            <div className="space-y-1 bg-white border border-gray-200 rounded-sm overflow-hidden">
+              {practiceAreas.map((practice, idx) => (
+                <Link 
+                  key={practice.title}
+                  to={practice.href}
+                  className={`group block px-6 py-5 hover:bg-gold/5 transition-colors border-b border-gray-100 last:border-b-0 ${
+                    idx % 2 === 1 ? 'bg-gray-50' : 'bg-white'
+                  }`}
+                >
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <h3 className="text-sm font-serif font-bold text-navy mb-1">
+                        {practice.title}
+                      </h3>
+                      <p className="text-xs text-slate/70">
+                        {practice.subtitle}
+                      </p>
+                    </div>
+                    <FiChevronRight className="w-5 h-5 text-slate/40 group-hover:text-gold transition-colors flex-shrink-0 ml-4" />
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Regulatory Briefings */}
+        <section className="bg-white py-12 md:py-16">
+          <div className="max-w-6xl mx-auto px-6">
+            <div className="flex items-center justify-between mb-10 md:mb-12">
+              <h2 className="text-xl md:text-2xl font-serif font-bold text-navy">
+                Regulatory Briefings
+              </h2>
+              <Link to="/publications" className="text-[11px] uppercase tracking-[0.2em] font-bold text-gold hover:text-gold/80 transition-colors">
+                View All
+              </Link>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {briefs.slice(0, 3).map((brief) => (
+                <Link
+                  key={brief.title}
+                  to={brief.href}
+                  className="p-6 border border-gray-200 rounded-sm hover:shadow-md hover:border-gold/40 transition-all duration-200 bg-white group"
+                >
+                  <p className="text-[10px] uppercase tracking-[0.16em] text-slate/60 mb-2 font-bold">
+                    {brief.date}
+                  </p>
+                  <h3 className="text-base font-serif font-bold text-navy mb-3 group-hover:text-gold transition-colors">
+                    {brief.title}
+                  </h3>
+                  <p className="text-sm text-slate/80 leading-relaxed line-clamp-3">
+                    {brief.excerpt}
+                  </p>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Footer CTA */}
+        <section className="bg-navy text-white py-12 md:py-16">
+          <div className="max-w-6xl mx-auto px-6">
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+              <div className="space-y-3">
+                <p className="text-[11px] uppercase tracking-[0.24em] text-gold font-bold">
+                  Attorney Advertising
+                </p>
+                <h3 className="text-2xl md:text-3xl font-serif font-bold">
+                  Ready to discuss your governance needs?
+                </h3>
+                <p className="text-steel text-base leading-relaxed max-w-2xl">
+                  Our team of compliance and infrastructure specialists is available for confidential consultations.
+                </p>
+              </div>
+              <Link
+                to="/contact"
+                className="inline-flex items-center justify-center px-6 py-3 bg-gold text-navy text-[11px] uppercase tracking-[0.2em] font-bold rounded-sm shadow-sm hover:shadow-md transition-shadow whitespace-nowrap"
+              >
+                Contact Firm
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Mobile Action Bar */}
+        <MobileActionBar />
+      </div>
+    </>
   );
 };
 

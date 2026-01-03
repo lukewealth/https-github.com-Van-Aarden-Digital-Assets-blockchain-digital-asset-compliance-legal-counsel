@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { brand } from '../config/brand';
 
 const Navbar: React.FC = () => {
   const location = useLocation();
@@ -7,21 +8,21 @@ const Navbar: React.FC = () => {
 
   const navLinks = [
     { name: 'Home', path: '/' },
-    { name: 'Team', path: '/team' },
-    { name: 'Institutional Value', path: '/institutional-value' },
-    { name: 'Energy', path: '/energy-infrastructure' },
-    { name: 'Banking', path: '/banking-integration' },
-    { name: 'Agriculture', path: '/agriculture-infrastructure' },
+    { name: 'Expertise', path: '/expertise' },
+    { name: 'Industries', path: '/institutional-value' },
     { name: 'Market Signals', path: '/market-precedent' },
-    { name: 'Government', path: '/government-sovereign' },
+    { name: 'Publications', path: '/publications' },
+    { name: 'Team', path: '/team' },
   ];
+
+  const isActive = (path: string) => location.pathname === path;
 
   return (
     <nav className="fixed w-full bg-white border-b border-gray-200 z-50">
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         <Link to="/" className="flex flex-col group">
-          <span className="text-navy font-serif text-xl tracking-tight font-bold uppercase">VDAC</span>
-          <span className="text-steel text-[10px] uppercase tracking-[0.2em] font-medium group-hover:text-gold transition-colors">Van Aarden Digital Assets Counsel</span>
+          <span className="text-navy font-serif text-xl tracking-tight font-bold uppercase">{brand.shortName}</span>
+          <span className="text-steel text-[10px] uppercase tracking-[0.2em] font-medium group-hover:text-gold transition-colors">{brand.legalName}</span>
         </Link>
 
         <div className="hidden lg:flex items-center space-x-6">
@@ -29,8 +30,10 @@ const Navbar: React.FC = () => {
             <Link
               key={link.path}
               to={link.path}
-              className={`text-xs uppercase tracking-widest font-semibold hover:text-gold transition-colors ${
-                location.pathname === link.path ? 'text-gold' : 'text-slate'
+              className={`text-xs uppercase tracking-widest font-semibold relative pb-1 transition-colors ${
+                isActive(link.path) 
+                  ? 'text-gold border-b-2 border-gold' 
+                  : 'text-slate hover:text-gold border-b-2 border-transparent'
               }`}
             >
               {link.name}
@@ -39,7 +42,7 @@ const Navbar: React.FC = () => {
         </div>
 
         <button
-          className="lg:hidden p-2 text-navy"
+          className="lg:hidden p-2 text-navy hover:text-gold transition-colors"
           onClick={() => setIsOpen(!isOpen)}
           aria-expanded={isOpen}
           aria-label="Toggle navigation"
@@ -57,7 +60,11 @@ const Navbar: React.FC = () => {
               <Link
                 key={link.path}
                 to={link.path}
-                className="text-xs uppercase tracking-widest font-semibold text-slate"
+                className={`text-xs uppercase tracking-widest font-semibold transition-colors ${
+                  isActive(link.path)
+                    ? 'text-gold'
+                    : 'text-slate'
+                }`}
                 onClick={() => setIsOpen(false)}
               >
                 {link.name}
