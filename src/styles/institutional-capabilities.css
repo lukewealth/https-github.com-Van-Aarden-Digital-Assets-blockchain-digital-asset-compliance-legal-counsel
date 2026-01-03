@@ -1,0 +1,71 @@
+.capability-tile {
+  min-height: 200px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  isolation: isolate;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 240ms ease, transform 240ms ease, box-shadow 220ms ease, border-color 220ms ease;
+}
+
+.capability-tile .capability-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(11, 28, 45, 0.82), rgba(11, 28, 45, 0.55));
+  z-index: 1;
+}
+
+.capability-tile.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.capability-tile.active-tile {
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(166, 137, 102, 0.26);
+}
+
+.capability-panel {
+  opacity: 0;
+  transform: translateY(8px);
+  border-color: rgba(166, 137, 102, 0.24);
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.08);
+  animation: capability-panel-in 240ms ease forwards;
+}
+
+.capability-panel .glow-accent {
+  box-shadow: 0 0 0 1px rgba(166, 137, 102, 0.28);
+}
+
+@media (min-width: 640px) {
+  .capability-tile {
+    min-height: 210px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .capability-tile {
+    min-height: 240px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .capability-tile,
+  .capability-panel {
+    animation-duration: 120ms !important;
+    transform: none !important;
+  }
+}
+
+@keyframes capability-panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.04);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(166, 137, 102, 0.22);
+  }
+}

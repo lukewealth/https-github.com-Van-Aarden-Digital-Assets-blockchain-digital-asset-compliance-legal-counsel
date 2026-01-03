@@ -1,9 +1,11 @@
 import React from 'react';
 import SEO from '../components/Seo';
+import TopBar from '../components/TopBar';
 
 const MarketPrecedent: React.FC = () => {
   return (
     <div className="bg-white py-20">
+      <TopBar title="Market Signals" showBack />
       <SEO title="Institutional Precedent & Market Signals | VDAC" description="Institutional observations on digital infrastructure." canonical="https://www.vdac.legal/market-precedent" />
       <div className="max-w-6xl mx-auto px-6 space-y-6">
         <h1 className="text-4xl font-serif text-navy">Institutional Precedent & Market Signals</h1>

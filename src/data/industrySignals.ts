@@ -1,67 +1,73 @@
-export type IndustrySignal = {
+import energyPower from '../assets/sectors/energy-power.webp';
+import bankingFinancial from '../assets/sectors/banking-financial.webp';
+import agricultureRural from '../assets/sectors/agriculture-rural.webp';
+import globalInfrastructure from '../assets/sectors/global-infrastructure.webp';
+
+export interface SignalSource {
+  name: string;
+  url: string;
+}
+
+export interface IndustrySignal {
   id: string;
   title: string;
   descriptor: string;
-  imageSrc: string;
-  paragraph: string;
-  readMoreHref: string;
-  sources: { label: string; url: string }[];
-};
+  route: string;
+  image: string;
+  content: string;
+  sources: SignalSource[];
+}
 
 export const industrySignals: IndustrySignal[] = [
   {
-    id: 'energy-power',
+    id: 'energy',
     title: 'Energy & Power Infrastructure',
     descriptor: 'Electricity grids, renewables, transmission, long-term energy assets',
-    imageSrc: '/src/assets/sectors/energy-power.webp',
-    paragraph:
-      'Institutional market signals show energy-linked digital infrastructure evaluated through governance, auditability, and curtailment controls applied to traditional grid assets. Operators document telemetry, incident response, and ESG disclosures so system operators and supervisors can assess risk. Compliance-by-design contracts set out curtailment rights, uptime SLAs, and reporting cadence aligned with energy regulators and institutional credit committees.',
-    readMoreHref: '/energy-infrastructure',
+    route: '/energy-infrastructure',
+    image: energyPower,
+    content: 'Institutional market signals indicate a growing demand for tokenized energy assets and carbon credits with verifiable, auditable compliance trails. Blockchain-based platforms are being evaluated for enhancing grid management, enabling peer-to-peer energy trading, and providing transparent governance over distributed energy resources. The focus is on creating compliance-by-design frameworks that ensure regulatory adherence for transmission contracts and renewable energy certificates, mitigating risks in an increasingly digitized and complex sector.',
     sources: [
-      { label: 'IEA – Electricity', url: 'https://www.iea.org/topics/electricity' },
-      { label: 'World Bank – Energy infrastructure', url: 'https://www.worldbank.org/en/topic/energy' },
+      { name: 'International Energy Agency (IEA) - Electricity', url: 'https://www.iea.org/topics/electricity' },
+      { name: 'The World Bank - Energy Sector', url: 'https://www.worldbank.org/en/topic/energy' },
     ],
   },
   {
-    id: 'banking-financial',
+    id: 'banking',
     title: 'Banking & Financial Services',
     descriptor: 'Regulated banks, capital integration, secure financial systems',
-    imageSrc: '/src/assets/sectors/banking-financial.webp',
-    paragraph:
-      'Institutional market signals indicate banks frame digital infrastructure through prudential risk, segregation of duties, and audit-ready controls. Structures avoid speculative custody, emphasizing service-based exposure with transparent counterparties, AML readiness, and operational evidence. Governance committees request disclosure packs, change-control logs, and assurance options to maintain compliance-by-design for supervisory dialogue.',
-    readMoreHref: '/banking-integration',
+    route: '/banking-integration',
+    image: bankingFinancial,
+    content: 'Leading financial institutions are actively exploring distributed ledger technology to enhance payment rails, streamline settlement, and create programmable money. Key institutional market signals point towards a need for robust, regulatory-compliant digital asset custody and tokenization of real-world assets. The emphasis is on building secure, auditable systems with strong governance and risk controls that can integrate seamlessly with existing capital market infrastructure, satisfying regulators and institutional risk appetites.',
     sources: [
-      { label: 'BIS – Cryptoasset prudential treatment', url: 'https://www.bis.org/bcbs/publ/d545.htm' },
-      { label: 'ECB – Crypto assets & stability', url: 'https://www.ecb.europa.eu/paym/crypto-assets/html/index.en.html' },
-      { label: 'FATF', url: 'https://www.fatf-gafi.org/en/home.html' },
+      { name: 'Basel Committee on Banking Supervision (BCBS)', url: 'https://www.bis.org/bcbs/publ/d545.htm' },
+      { name: 'European Central Bank (ECB) - Crypto-Assets', url: 'https://www.ecb.europa.eu/paym/crypto-assets/html/index.en.html' },
+      { name: 'Financial Conduct Authority (FCA) - Cryptoassets', url: 'https://www.fca.org.uk/cryptoassets' },
     ],
   },
   {
-    id: 'agriculture-rural',
+    id: 'agriculture',
     title: 'Agriculture & Rural Infrastructure',
     descriptor: 'Farmland, irrigation, food security, rural development systems',
-    imageSrc: '/src/assets/sectors/agriculture-rural.webp',
-    paragraph:
-      'Institutional market signals in rural contexts focus on governance, procurement compliance, and community impact. Controllable compute is paired with irrigation or processing loads under documented curtailment rights and reporting. Development agencies and ministries require audit trails, ESG disclosures, and risk controls that fit public finance and concessional funding frameworks, preserving service priority for local stakeholders.',
-    readMoreHref: '/agriculture-infrastructure',
+    route: '/agriculture-infrastructure',
+    image: agricultureRural,
+    content: 'Institutional market signals in the agriculture sector show a clear trend towards digitizing supply chains for improved traceability, transparency, and food security. Blockchain offers a mechanism for creating immutable records of provenance, from farm to table, enhancing auditability and compliance with international trade standards. Governance frameworks for tokenized agricultural assets and smart contracts for automating insurance payouts are being developed to de-risk investment in rural infrastructure and ensure fair practice.',
     sources: [
-      { label: 'FAO – Digital agriculture', url: 'https://www.fao.org/digital-agriculture/en/' },
-      { label: 'World Bank – Rural development', url: 'https://www.worldbank.org/en/topic/ruraldevelopment' },
-      { label: 'UNDP – Digital for development', url: 'https://www.undp.org/digital' },
+      { name: 'Food and Agriculture Organization (FAO) - Digital Agriculture', url: 'https://www.fao.org/digital-agriculture/en/' },
+      { name: 'The World Bank - Rural Development', url: 'https://www.worldbank.org/en/topic/ruraldevelopment' },
+      { name: 'United Nations Development Programme (UNDP) - Digital Strategy', url: 'https://www.undp.org/digital' },
     ],
   },
   {
-    id: 'global-infrastructure',
+    id: 'global',
     title: 'Global Infrastructure & Capital Investment',
     descriptor: 'Large-scale assets such as data centers, transport, utilities, and urban development',
-    imageSrc: '/src/assets/sectors/global-infrastructure.webp',
-    paragraph:
-      'Institutional market signals for global infrastructure emphasize parallels to data centers and utilities: uptime, resiliency, cybersecurity, and regulatory posture. Capital allocators review jurisdictional mapping, contractual risk allocation, and independent monitoring. Compliance-by-design and auditability are prerequisites for inclusion in diversified infrastructure strategies without implying endorsement or performance.',
-    readMoreHref: '/market-precedent',
+    route: '/market-precedent',
+    image: globalInfrastructure,
+    content: 'The tokenization of large-scale infrastructure assets represents a significant shift in capital markets, and institutional market signals point to a cautious but clear interest. This includes fractionalizing ownership of data centers, toll roads, and utilities to increase liquidity and broaden investor access. Critical to this evolution is the implementation of robust governance models, clear disclosure controls, and compliance-by-design to satisfy institutional due diligence. The goal is to build auditable, transparent, and regulated secondary markets for these assets.',
     sources: [
-      { label: 'Brookfield – Infrastructure investment', url: 'https://www.brookfield.com/our-businesses/infrastructure' },
-      { label: 'World Economic Forum – Digital infrastructure', url: 'https://www.weforum.org/agenda/archive/digital-infrastructure/' },
-      { label: 'BlackRock – Digital assets perspective', url: 'https://www.blackrock.com/corporate/insights/digital-assets' },
+      { name: 'Brookfield - Infrastructure', url: 'https://www.brookfield.com/our-businesses/infrastructure' },
+      { name: 'World Economic Forum - Digital Infrastructure', url: 'https://www.weforum.org/agenda/archive/digital-infrastructure/' },
+      { name: 'BlackRock - Digital Assets', url: 'https://www.blackrock.com/corporate/insights/digital-assets' },
     ],
   },
 ];

@@ -37,6 +37,9 @@ const Footer: React.FC = () => {
             <div>
               <h4 className="text-[10px] uppercase tracking-widest font-bold text-gold mb-4">Firm</h4>
               <ul className="space-y-3 uppercase tracking-widest text-xs">
+                <li>
+                  <a href="/team" className="hover:text-white transition-colors">Team</a>
+                </li>
                 <li>Professional Ethics</li>
                 <li>Privacy Policy</li>
                 <li>Data Protection</li>
@@ -46,7 +49,7 @@ const Footer: React.FC = () => {
         </div>
         <div className="text-steel text-[11px] uppercase tracking-[0.2em] space-y-4">
           <p>© {new Date().getFullYear()} {brand.legalName}. Prior results do not guarantee similar outcomes.</p>
-          <p>VDAC is an independent legal advisory practice focused on compliance, governance, and regulatory readiness. No investment solicitation or return guarantees are provided.</p>
+          <p>{brand.legalName} (VDAC) is an independent legal advisory practice focused on compliance, governance, and regulatory readiness. No investment solicitation or return guarantees are provided.</p>
         </div>
       </div>
     </footer>

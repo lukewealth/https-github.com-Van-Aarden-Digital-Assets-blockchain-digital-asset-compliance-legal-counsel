@@ -8,6 +8,9 @@ import BankingIntegration from './pages/BankingIntegration';
 import GovernmentSovereign from './pages/GovernmentSovereign';
 import MarketPrecedent from './pages/MarketPrecedent';
 import Team from './pages/Team';
+import ExpertiseHub from './pages/ExpertiseHub';
+import IndustryPractice from './pages/IndustryPractice';
+import Contact from './pages/Contact';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
@@ -35,6 +38,9 @@ const App: React.FC = () => {
             <Route path="/government-sovereign" element={<GovernmentSovereign />} />
             <Route path="/market-precedent" element={<MarketPrecedent />} />
             <Route path="/team" element={<Team />} />
+            <Route path="/expertise" element={<ExpertiseHub />} />
+            <Route path="/industry/:slug" element={<IndustryPractice />} />
+            <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>
         <Footer />
