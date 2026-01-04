@@ -1,6 +1,8 @@
 import React from 'react';
 import { IndustrySignal } from '../data/industrySignals';
 import { FiArrowRight } from 'react-icons/fi';
+import ResponsiveImage from './ResponsiveImage';
+import { imageConfigs } from '../utils/imageOptimization';
 import '../styles/industry-signals.css';
 
 interface IndustryCardProps {
@@ -20,7 +22,13 @@ const IndustryCard: React.FC<IndustryCardProps> = ({ industry, isActive, onClick
         {/* Front of the card */}
         <div className="industry-card-front rounded-lg overflow-hidden">
           <div className="absolute inset-0 bg-navy/60 z-10"></div>
-          <img src={industry.image} alt={industry.title} className="industry-card-image" />
+          <ResponsiveImage
+            src={industry.image}
+            alt={industry.title}
+            className="industry-card-image"
+            sizes={imageConfigs.sectionBackground.sizes}
+            decoding="async"
+          />
           <div className="absolute inset-0 z-20 flex flex-col justify-end text-left p-6 text-white">
             <h3 className="font-serif text-2xl">{industry.title}</h3>
             <p className="text-sm text-steel mt-1">{industry.descriptor}</p>

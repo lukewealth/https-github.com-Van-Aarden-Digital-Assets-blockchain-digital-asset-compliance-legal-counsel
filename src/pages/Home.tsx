@@ -6,6 +6,7 @@ import { brand } from '../config/brand';
 import { practiceAreas } from '../data/practiceAreas';
 import { briefs } from '../data/briefs';
 import MobileActionBar from '../components/MobileActionBar';
+import heroBg from '@/assets/backgrounds/energy.webp';
 
 // Import SVG icons
 const GlobeIcon = () => (
@@ -54,10 +55,9 @@ const Home: React.FC = () => {
           <div 
             className="absolute inset-0"
             style={{
-              backgroundImage: `url('/Energy landscape at twilight.png')`,
+              backgroundImage: `url(${heroBg})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
-              backgroundAttachment: 'fixed',
               opacity: 0.15,
             }}
           ></div>

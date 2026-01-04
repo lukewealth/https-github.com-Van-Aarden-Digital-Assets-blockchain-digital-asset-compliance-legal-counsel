@@ -1,6 +1,8 @@
 import React from 'react';
 import { FiLinkedin, FiTwitter } from 'react-icons/fi';
 import { TeamMember } from '../data/team';
+import ResponsiveImage from './ResponsiveImage';
+import { imageConfigs } from '../utils/imageOptimization';
 
 interface TeamCardProps {
   member: TeamMember;
@@ -16,11 +18,12 @@ const TeamCard: React.FC<TeamCardProps> = ({ member, isVisible, delay }) => {
     >
       <div className="team-card-frame">
         <div className="team-card-image-wrapper">
-          <img
+          <ResponsiveImage
             src={member.headshot}
             alt={`Headshot of ${member.name}`}
             className="team-card-image"
-            loading="lazy"
+            sizes={imageConfigs.teamHeadshot.sizes}
+            decoding="async"
           />
         </div>
       </div>

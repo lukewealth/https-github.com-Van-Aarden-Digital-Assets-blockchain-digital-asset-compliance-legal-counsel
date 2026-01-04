@@ -6,6 +6,7 @@ import QuoteBox from '../components/QuoteBox';
 import BottomActionBar from '../components/BottomActionBar';
 import ReferencesBlock from '../components/ReferencesBlock';
 import { industries } from '../data/industries';
+import institutionalBg from '@/assets/backgrounds/institutional.webp';
 import { references } from '../data/references';
 
 const IndustryPractice: React.FC = () => {
@@ -41,7 +42,7 @@ const IndustryPractice: React.FC = () => {
 
         <div
           className="presence-banner rounded-md overflow-hidden"
-          style={{ backgroundImage: `linear-gradient(180deg, rgba(11,28,45,0.78), rgba(11,28,45,0.58)), url(${industry.background || '/src/assets/backgrounds/institutional.webp'})` }}
+          style={{ backgroundImage: `linear-gradient(180deg, rgba(11,28,45,0.78), rgba(11,28,45,0.58)), url(${industry.background || institutionalBg})` }}
         >
           <div className="p-6 text-center text-white space-y-1">
             <p className="text-[11px] uppercase tracking-[0.24em] text-gold">Global Insight</p>

@@ -1,4 +1,9 @@
 import { references } from './references';
+import energyBg from '@/assets/backgrounds/energy.webp';
+import bankingBg from '@/assets/backgrounds/banking.webp';
+import agricultureBg from '@/assets/backgrounds/agriculture.webp';
+import globalInfraBg from '@/assets/backgrounds/global-infrastructure.webp';
+import institutionalBg from '@/assets/backgrounds/institutional.webp';
 
 export type Industry = {
   slug: string;
@@ -34,7 +39,7 @@ export const industries: Industry[] = [
       { label: "Public-Private Partnership MSAs", href: "/energy-infrastructure" },
       { label: "Cross-Jurisdictional Defense", href: "/energy-infrastructure" },
     ],
-    background: "/src/assets/backgrounds/energy.webp",
+    background: energyBg,
     referencesKey: "energy",
   },
   {
@@ -56,7 +61,7 @@ export const industries: Industry[] = [
       { label: "Public-Private Partnership MSAs", href: "/banking-integration" },
       { label: "Cross-Jurisdictional Defense", href: "/banking-integration" },
     ],
-    background: "/src/assets/backgrounds/banking.webp",
+    background: bankingBg,
     referencesKey: "banking",
   },
   {
@@ -78,7 +83,7 @@ export const industries: Industry[] = [
       { label: "Public-Private Partnership MSAs", href: "/agriculture-infrastructure" },
       { label: "Cross-Jurisdictional Defense", href: "/agriculture-infrastructure" },
     ],
-    background: "/src/assets/backgrounds/agriculture.webp",
+    background: agricultureBg,
     referencesKey: "agriculture",
   },
   {
@@ -100,7 +105,7 @@ export const industries: Industry[] = [
       { label: "Public-Private Partnership MSAs", href: "/market-precedent" },
       { label: "Cross-Jurisdictional Defense", href: "/market-precedent" },
     ],
-    background: "/src/assets/backgrounds/global-infrastructure.webp",
+    background: globalInfraBg,
     referencesKey: "market",
   },
 ];
